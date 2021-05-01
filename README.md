@@ -3,8 +3,9 @@
 ## Introduction
 One of the Accenture's Federal clients has a global supply chain and the system that they maintain for client tracks the procurement, distribution, maintenance, and retirement of their assets. The system contains more than 10 years of data. Every user in their system is assigned different roles based on the functions that they need to perform. The goal of this project is to Create a dashboard that can be broken down by location that gives a list of the users that need training and the training area sorted by urgency.
 
+### Preprocessing and Modeling
 
-### Training Disposals
+#### Training Disposals
 * Removed duplicates
 * Changed the datatypes
 * Imputed the missing data
@@ -20,7 +21,7 @@ One of the Accenture's Federal clients has a global supply chain and the system 
 * Renamed the new columns
 * Removed the dupicate rows
 
-### Training Locations
+#### Training Locations
 * Checked and imputed the missing values
 * Removed duplicate rows
 * Corrected the data types of the attrubutes
@@ -43,7 +44,7 @@ One of the Accenture's Federal clients has a global supply chain and the system 
 * Displayed the records that rating >= 0
 * Display the results by score from large to small
 
-### Training Receieving
+#### Training Receieving
 * Checked for missing values and imputed with 0
 * Removed duplicate rows
 * Removed unwanted punctuations
