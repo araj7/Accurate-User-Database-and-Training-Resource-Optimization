@@ -5,9 +5,9 @@
 One of the Accenture's Federal clients has a global supply chain and the system that they maintain for client tracks the procurement, distribution, maintenance, and retirement of their assets. The system contains more than 10 years of data. Every user in their system is assigned different roles based on the functions that they need to perform. The goal of this project is to Create a dashboard that can be broken down by location that gives a list of the users that need training and the training area sorted by urgency.
 
 ### Datasets
-1.  Users for Receiving - the user who received the item. 
-2. 	Users for Location - the user who moved the asset to a new location. 
-3. 	Users for Disposal - the users who disposed of the asset.
+1.  gmu_training_Receiving - the user who received the item. 
+2. 	gmu_training_location - the user who moved the asset to a new location. 
+3. 	gmu_training_disposal - the users who disposed of the asset.
 
 
 ### Preprocessing and Modeling
