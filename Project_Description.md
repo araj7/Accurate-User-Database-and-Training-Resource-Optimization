@@ -1,113 +1,130 @@
 # Accurate User Database and Training Resource Optimization
-#### In partership with Accenture
+
+**In Partnership with Accenture**
 
 ## Introduction
-One of the Accenture's Federal clients has a global supply chain and the system that they maintain for client tracks the procurement, distribution, maintenance, and retirement of their assets. The system contains more than 10 years of data. Every user in their system is assigned different roles based on the functions that they need to perform. The goal of this project is to Create a dashboard that can be broken down by location that gives a list of the users that need training and the training area sorted by urgency.
+Accenture collaborated with one of its federal clients to optimize a global supply chain system. This system, which tracks procurement, distribution, maintenance, and retirement of assets, contains over 10 years of data. Users in the system are assigned roles based on their functional responsibilities.
 
-### Datasets
-1.  gmu_training_Receiving - the user who received the item. 
-2. 	gmu_training_location - the user who moved the asset to a new location. 
-3. 	gmu_training_disposal - the users who disposed of the asset.
+The objective of this project is to develop a **location-based dashboard** that identifies users requiring training, the training areas needed, and prioritizes these based on urgency.
 
+---
 
-### Preprocessing and Modeling
+## Datasets
+- **`gmu_training_receiving`**: Users who received assets.
+- **`gmu_training_location`**: Users who moved assets to new locations.
+- **`gmu_training_disposal`**: Users who disposed of assets.
 
-#### Training Disposals
-* Removed duplicates
-* Changed the datatypes
-* Imputed the missing data
-* Created additional columns based on the calculations that we did from the preexisting ones
-* Removed the unnessacary columns
-* Performed some mathematical calculations to find the weights for disposal roles
-* Standardized the error cost column using the StandardScaler
-* Normalized every other feature using the MinMaxScaler()
-* Merged the orginal total cost to the result for reference
-* Outer join two tables "top 10 highest scoring users" and orginal total cost and result tables by using common field "user"
-* Removed the duplicate rows
-* Generated new dashboard
-* Renamed the new columns
-* Removed the dupicate rows
+---
 
-#### Training Locations
-* Checked and imputed the missing values
-* Removed duplicate rows
-* Corrected the data types of the attrubutes
-* Removed unwanted punctuations
-* Imputed the NaN values with 0
-* Create new table to continue modeling
-* Assigning weights to the location columns
-* Standardized the role location column by using StandardScaler()
-* Normalized every feature by using MinMaxScaler()
-* Assigned weights to every attribute
-* Merged the orginal total cost to the result for reference
-* Displayed reeults in a table in descending order
-* Displayed the top 10 users with highest socres in a table
-* Merged the two tables with outer join using a common field user
-* Removed all the missing values
-* Removed the duplicate rows
-* Genereted new dashboard
-* Adjusted column names
-* Displayed the results by score from large to small
-* Displayed the records that rating >= 0
-* Display the results by score from large to small
+## Preprocessing and Modeling
 
-#### Training Receieving
-* Checked for missing values and imputed with 0
-* Removed duplicate rows
-* Removed unwanted punctuations
-* Fixed the datatypes
-* Assigned weights to the role receiving
-* Standerdized the error cost feature using StandardScaler()
-* Normalized rest of the features using MinMaxScaler()
-* Displayed the results by score from large to small
-* Display top 10 users that have the higher scores
-* Outer join two tables by using common field "user"
-* Generated new dashboard
-* Renamed the columns
-* Show results by score from large to small
-* Select user records that have rating >= 0
-* Outer join the three table, using a common field "user"
-* Checked if there is missing value (missing value here has a meaning, which means the user doesnt have specific role)
-* Calculating the total rating
-* Displayed the top 10 highest scoring users
-* Generated new table
-* Displayed if the user has a specific role. If he has a role, the value = 1
-* Displayed the top 10 highest scoring users
-* Displayed the top 10 location in role disposals
-* Displayed the top 10 location in role location
-* Displayed the top 10 location in role receiving
-* Calculated the total rating
-* Sorted the location id in descending order
-* Display the results by score from large to small
-* Export table to s3 to create dashboard
+### 1. **Training Disposals**
+- Removed duplicates.
+- Changed data types.
+- Imputed missing data.
+- Created additional columns using calculations from existing ones.
+- Removed unnecessary columns.
+- Performed mathematical calculations to assign weights for disposal roles.
+- Standardized the `error_cost` column using `StandardScaler`.
+- Normalized features using `MinMaxScaler`.
+- Merged the original `total_cost` for reference.
+- Outer joined tables:
+  - **Top 10 highest scoring users**.
+  - **Original total cost and results tables** (common field: `user`).
+- Removed duplicate rows.
+- Generated a new dashboard:
+  - Renamed columns.
+  - Displayed results sorted by score (descending).
+  - Filtered records with `rating >= 0`.
 
-### Visualizations
+### 2. **Training Locations**
+- Checked and imputed missing values.
+- Removed duplicate rows and unwanted punctuations.
+- Corrected data types.
+- Imputed `NaN` values with `0`.
+- Created a new table for modeling.
+- Assigned weights to location-related columns.
+- Standardized the `role_location` column using `StandardScaler`.
+- Normalized all features with `MinMaxScaler`.
+- Merged the original `total_cost` for reference.
+- Displayed results in descending order:
+  - **Top 10 users with the highest scores**.
+- Outer joined tables (common field: `user`).
+- Removed missing values and duplicate rows.
+- Generated a new dashboard with adjusted column names.
 
-* Users vs total rating - Scatter plot
-* Top 10 users total rating - Bar plot
-* Top 10 users vs disposal rating - Bar plot
-* Top 10 users vs error cost - Bar plot
-* Top 10 users vs Error Scan_Type Actions - Bar plot
-* Disposal - Top 10 Users vs Error Retirement Date Actions - Bar plot
-* Disposal - Top 10 Users vs Error Documentation Actions - Bar plot
-* Location - Top 10 Users vs Location Rating - Bar plot
-* Location - Top 10 Users vs Error Cost - Bar plot
-* Location - Top 10 Users vs Error Validation Actions - Bar plot
-* Location - Top 10 Users vs Error Validation Action Percentage - Bar plot
-* Receiving - Top 10 Users vs Receiving Rating - Bar plot
-* Receiving - Top 10 Users vs Error Cost - Bar plot
-* Receiving - Top 10 Users vs Error Misclassification Actions - Bar plot
-* Receiving - Top 10 Users vs Error Creation Method Actions - Bar plot
-* Location vs Total Rating - Scatter plot
-* Location - Top 10 Business Unit vs Disposals Rating - Bar plot
-* Location - Top 10 Business Unit vs Scan Type Rating - Bar plot
-* Location - Top 10 Business Unit vs Retriment Date Rating - Bar plot
-* Location - Top 10 Business Unit vs Disposal Doc Rating - Bar plot 
-* Location - Top 10 Business Unit vs Error Cost Rating - Bar plot
-* Location - Top 10 Business Unit vs Location Rating - Bar plot
-* Location - Top 10 Business Unit vs VAL_DS584 Rating - Bar plot
-* Location - Top 10 Business Unit vs Error Cost - Bar plot
-* Location - Top 10 Business Unit vs Receiving Rating - Bar plot
-* Location - Top 10 Business Unit vs Missclassification Rating - Bar plot
-* Location - Top 10 Business Unit vs Creation Method Rating - Bar plot
-* Location - Top 10 Business Unit vs Error Cost Rating - Bar plot
+### 3. **Training Receiving**
+- Checked for missing values and imputed with `0`.
+- Removed duplicate rows and unwanted punctuations.
+- Fixed data types.
+- Assigned weights to the receiving role.
+- Standardized the `error_cost` column using `StandardScaler`.
+- Normalized other features with `MinMaxScaler`.
+- Displayed results in descending order:
+  - **Top 10 users with the highest scores**.
+- Outer joined tables (common field: `user`).
+- Generated a new dashboard with renamed columns.
+
+---
+
+## Final Data Integration
+- Outer joined all three tables (common field: `user`).
+- Handled missing values to indicate absence of specific roles.
+- Calculated `total_rating`:
+  - Displayed top 10 users by total score.
+  - Indicated role presence (value = `1` for assigned roles).
+  - Displayed top 10 locations for roles: disposal, location, and receiving.
+- Exported final table to S3 for dashboard creation.
+
+---
+
+## Visualizations
+### User Analysis
+- **Users vs Total Rating** - Scatter plot.
+- **Top 10 Users (Total Rating)** - Bar plot.
+- **Top 10 Users (Disposal Rating)** - Bar plot.
+- **Top 10 Users (Error Cost)** - Bar plot.
+
+### Disposal Role Analysis
+- **Top 10 Users (Error Actions by Scan Type)** - Bar plot.
+- **Top 10 Users (Error Actions by Retirement Date)** - Bar plot.
+- **Top 10 Users (Error Actions by Documentation)** - Bar plot.
+
+### Location Role Analysis
+- **Top 10 Users (Location Rating)** - Bar plot.
+- **Top 10 Users (Error Cost)** - Bar plot.
+- **Top 10 Users (Error Actions by Validation)** - Bar plot.
+
+### Receiving Role Analysis
+- **Top 10 Users (Receiving Rating)** - Bar plot.
+- **Top 10 Users (Error Cost)** - Bar plot.
+- **Top 10 Users (Error Actions by Misclassification)** - Bar plot.
+- **Top 10 Users (Error Actions by Creation Method)** - Bar plot.
+
+### Business Unit Analysis
+- **Top 10 Business Units by Rating (Various Criteria)**:
+  - Disposal Rating.
+  - Scan Type Rating.
+  - Retirement Date Rating.
+  - Documentation Rating.
+  - Error Cost Rating.
+  - Location Rating.
+  - Receiving Rating.
+  - Misclassification Rating.
+  - Creation Method Rating.
+
+---
+
+## Output and Deployment
+- All processed data was exported to **Amazon S3** for integration into the dashboard.
+- The dashboard enables actionable insights:
+  - Identifies users requiring training.
+  - Prioritizes training needs by urgency and location.
+  - Displays top-performing users and error trends.
+
+---
+
+## Conclusion
+This project showcases a streamlined approach to optimizing user training resources using robust data preprocessing, feature engineering, and visualization techniques. The dashboards provide valuable insights, enhancing operational efficiency and decision-making.
+
+---
